@@ -67,8 +67,8 @@ button,input,select{font:inherit}
 .fig.short{min-height:240px}
 .fig.tall{min-height:420px}
 .fig>svg,.fig>canvas{position:absolute;inset:0;width:100%;height:100%;touch-action:none}
-svg text{font-family:Inter,sans-serif;font-size:14px;fill:var(--ink);paint-order:stroke;stroke:var(--panel);stroke-width:4px;stroke-linejoin:round}
-.herofig svg text{stroke:var(--bg)}
+svg text{font-family:Inter,sans-serif;font-size:14px;fill:var(--ink);stroke:none}
+.herofig svg text{stroke:none}
 .ctrl{display:flex;flex-direction:column;gap:14px;font-size:15px}
 .ctrl label{font-weight:600;display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .ctrl output,.num{font-family:Sora,sans-serif;font-variant-numeric:tabular-nums;white-space:nowrap}
