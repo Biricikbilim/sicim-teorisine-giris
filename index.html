@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sicim Teorisine Giriş</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>
+window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};
+</script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-svg.min.js"></script>
+</head>
+<body>
+<header class="top">
+<a class="brand" href="#home"><svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true"><path d="M3 25L25 3M3 3l22 22" stroke="var(--ray)" stroke-width="2.4"/><ellipse cx="14" cy="14" rx="5" ry="2.2" fill="none" stroke="var(--field)" stroke-width="2.4"/></svg>Sicim Teorisine Giriş</a>
+<nav class="tabs" aria-label="Bölümler">
+<a href="#home" data-v="home">Ana sayfa</a>
+<a href="#ch1" data-v="ch1">Chapter 1</a>
+<a href="#ch2" data-v="ch2">Chapter 2</a>
+</nav>
+</header>
+
+<!-- ============ HOME ============ -->
+<main id="v-home" class="view on">
+<section class="hero">
+<h1>Sicim Teorisine Giriş: ders arkadaşı</h1>
+<p>Her bölümün özeti, formüllerin nereden geldiği ve elle oynayabileceğiniz figürler. Amaç sonucu ezberlemek değil, nedenini görmek. Aşağıdaki diyagram dersin ilk büyük aracı: hızı değiştirin, hareket eden gözlemcinin eksenlerinin ışık doğrusuna doğru nasıl kapandığını izleyin.</p>
+<div class="herofig">
+<div class="fig tall"><svg id="mk-home" role="img" aria-label="Minkowski diyagramı"></svg></div>
+<div class="ctrl">
+<label for="b-home">Gözlemcinin hızı β <output id="o-home">0,50</output></label>
+<input type="range" id="b-home" min="-0.9" max="0.9" step="0.01" value="0.5">
+<dl class="read" id="r-home"></dl>
+<p class="note">Turuncu nokta sürüklenebilir. Turuncu çizgiler ışık; gri eğriler aralığı sabit noktalar. Nokta, hız değişince hep aynı gri eğri üzerinde kalır.</p>
+</div>
+</div>
+</section>
+<div class="cards">
+<a class="card" href="#ch1"><span class="k">Chapter 1</span><h2>Birleşme ve kuantum kütleçekim</h2>
+<p>String teorisi hangi soruya cevap arıyor ve bugün nerede duruyor?</p>
+<ol><li>Birleşmenin tarihi</li><li>Maxwell'in düzeltmesi</li><li>Planck ölçeği</li><li>String fikri</li><li>Ekstra boyutlar</li><li>Beş teori ve M-theory</li><li>D-brane'ler</li><li>Kara delik entropisi</li><li>AdS/CFT</li><li>Kendini dene</li></ol></a>
+<a class="card" href="#ch2"><span class="k">Chapter 2</span><h2>Özel görelilik ve light-cone</h2>
+<p>String'i kuantize ederken kullanacağımız dil ve light-cone Hamiltonian'ı.</p>
+<ol><li>Birimler</li><li>Aralık ve ışık konisi</li><li>Lorentz dönüşümleri</li><li>Hız toplama</li><li>Proper time</li><li>Light-cone koordinatları</li><li>Enerji ve momentum</li><li>Light-cone enerjisi</li><li>D boyut</li><li>Kendini dene</li></ol></a>
+</div>
+</main>
+
+<!-- ============ CHAPTER 1 ============ -->
+<div id="v-ch1" class="view">
+<div class="chap">
+<nav class="rail" aria-label="Chapter 1 bölümleri">
+<h2>Chapter 1</h2>
+<a href="#ch1-birlesme">Birleşmenin tarihi</a>
+<a href="#ch1-maxwell">Maxwell'in düzeltmesi</a>
+<a href="#ch1-planck">Planck ölçeği</a>
+<a href="#ch1-string">String fikri</a>
+<a href="#ch1-boyut">Ekstra boyutlar</a>
+<a href="#ch1-teori">Beş teori, M-theory</a>
+<a href="#ch1-brane">D-brane'ler</a>
+<a href="#ch1-karadelik">Kara delik entropisi</a>
+<a href="#ch1-ads">AdS/CFT ve yaklaşımlar</a>
+<a href="#ch1-quiz">Kendini dene</a>
+</nav>
+<main class="content">
+<header class="chead" id="ch1"><h1>Chapter 1: Birleşme, kuantum kütleçekim ve string teorisinin kapsamı</h1>
+<p>Bu bölümde ağır hesap yok, harita var. String teorisinin hangi soruya cevap aradığını, hangi iddialarının kanıtlanmış sonuç, hangilerinin motivasyon olduğunu ayırıyoruz. Okurken her iddiayı üç sütundan birine koyun: birleşme, kuantum tutarlılık, deneysel sınama.</p></header>
+
+<section class="sec" id="ch1-birlesme"><h2>Birleşmenin kısa tarihi</h2>
+<p>Fizikte birleşme, ayrı sandığımız olguların aynı yasadan çıkması. Ama tarihe bakınca her seferinde başka bir şeyin birleştiğini görüyoruz. Aşağıdaki listede bir satıra dokunun; aralıklar kabaca aradaki yıl farkına göre.</p>
+<div class="figwrap">
+<div class="fig" style="min-height:560px"><svg id="tl" role="img" aria-label="Zaman şeridi"></svg></div>
+<div class="info" id="tl-info"><h3>Bir noktaya dokunun</h3><p>Her nokta bir birleşme ya da string teorisi tarihinde bir dönüm noktası.</p></div>
+</div>
+<p class="cap">Son altmış yılın kalabalık olması tesadüf değil: Kuantum alan teorisi oturduktan sonra birleşme soruları hızlandı.</p>
+<h3 class="sub">Dört farklı birleşme türü</h3>
+<p>Newton'da birleşen iki alemdi: Elmayı düşüren kuvvetle Ay'ı yörüngede tutan kuvvet aynı. Maxwell'de birleşen alanların dinamiğiydi: Elektrik, manyetizma ve ışık tek denklem takımından çıktı. Einstein'da birleşen sahnenin kendisiydi: Uzay ve zaman tek bir uzayzamana dönüştü. Elektrozayıf teoride iki etkileşim tek bir simetrinin farklı görünümleri oldu.</p>
+<div class="why"><h3>Neden birleşme peşindeyiz?</h3><p>İki nedeni var. Birincisi ekonomi: Az sayıda yasa, çok sayıda olguyu açıklıyor. İkincisi, ve daha önemlisi, öngörü. Bir birleşme, önceden ayrı sandığımız olgular arasında zorunlu ilişkiler kurar ve bu ilişkilerden yeni sonuçlar çıkar. Maxwell'in birleşmesi ışık hızını hesapladı; elektrozayıf teori \(W\) ve \(Z\) bozonlarını, kütleleriyle birlikte, bulunmadan önce söyledi.</p></div>
+<p>Ağaçta iki tür kutu var. Köşeli mavi kutular kuvvetler ve onları birleştiren teoriler. Yuvarlak yeşil kutular çerçeveler. Kuantum mekaniği ve özel görelilik tek bir kuvveti anlatmıyor; hangi kuvveti anlatırsa anlatsın her teorinin uyması gereken kuralları koyuyor. Elektromanyetizmayı da, zayıf etkileşimi de bu kurallara uyan bir teori olarak yazarız. İkisinin birleşmesi kuantum alan teorisi; Standart Model'deki bütün etkileşimler bu dilde yazılıyor. Genel görelilik ise bu dile hiç geçmedi. Kuantum kütleçekim sorusu tam olarak burada: Sağ üstteki kesikli oklar, klasik bir kütleçekim teorisini kuantum alan teorisiyle aynı çatı altına sokma problemi.</p>
+<div class="figwrap wide">
+<div class="fig" style="min-height:430px"><svg id="tree" role="img" aria-label="Birleşme ağacı"></svg></div>
+<div class="info" id="tree-info"></div>
+</div>
+<p style="margin-top:18px">Ağacın sağ ucu önemli bir yanlışı düzeltiyor: Standart Model bütün kuvvetleri tek kuvvette birleştirmiş değil. Üç etkileşimi aynı dilde, kuantum alan teorisi dilinde anlatıyor, ama gauge yapısı üç ayrı parçanın toplamı ve her parçanın kendi bağlaşım sabiti var. Kütleçekim ise ayrı bir kolda ve klasik.</p>
+<div class="eq">\[\mathfrak{su}(3)_c\oplus\mathfrak{su}(2)_L\oplus\mathfrak{u}(1)_Y\]</div>
+<div class="warn">İki ayrı iddiayı karıştırmayın. Kütleçekimin kuantum tarifi bir <b>ihtiyaç</b>: madde kuantumsa ve geometriyi madde belirliyorsa, geometri de kuantum olmalı. Bütün etkileşimlerin tek yapıdan çıkması ise bir <b>beklenti</b>. Birincisi ikincisini zorunlu kılmaz. String teorisi ikisine birden aday.</div>
+</section>
+
+<section class="sec" id="ch1-maxwell"><h2>Maxwell'in düzeltmesi: tutarlılık yeni fizik verir</h2>
+<p>Bu küçük örnekte bütün dersin mantığı var: Bildiğimiz iki yasa çelişiyor, çelişkiyi gidermek için bir terim ekliyoruz ve eklediğimiz terim beklemediğimiz bir sonuç veriyor.</p>
+<h3 class="sub">Çelişkiyi bir kondansatörde görmek</h3>
+<p>Ampère yasası bir halkanın çevresindeki manyetik alanı, o halkayı kapatan <b>herhangi bir</b> yüzeyden geçen akıma bağlıyor. Yüzeyi istediğimiz gibi seçebilmeliyiz; manyetik alan bizim seçimimize bağlı olamaz. Şarj olan bir kondansatörde iki yüzey seçin: biri tellerden geçsin, öbürü levhaların arasından dolansın.</p>
+<div class="figwrap">
+<div class="fig"><svg id="cap" role="img" aria-label="Kondansatör ve iki yüzey"></svg></div>
+<div class="ctrl">
+<div class="seg" id="cap-s"><button data-s="1" aria-pressed="true">Yüzey 1: düz disk</button><button data-s="2" aria-pressed="false">Yüzey 2: torba</button></div>
+<div class="seg"><button id="cap-m" aria-pressed="false">Maxwell terimini ekle</button></div>
+<label for="cap-i">Akım I <output id="cap-io"></output></label>
+<input type="range" id="cap-i" min="0.2" max="2" step="0.05" value="1">
+<div class="verdict" id="cap-v"></div>
+</div>
+</div>
+<div class="why"><h3>Neden bir terim eksik?</h3><p>Torba yüzeyinden hiç yük geçmiyor; levhaların arası boşluk. Eski Ampère yasası bu yüzey için manyetik alana sıfır diyor, düz disk için \(\mu_0 I\). Aynı halka için iki farklı cevap olamaz. Levhaların arasında akan bir şey yok ama değişen bir şey var: elektrik alan. Maxwell'in terimi tam olarak bu değişimi akım gibi sayıyor ve iki yüzey aynı cevabı veriyor.</p></div>
+<h3 class="sub">Aynı sonuca denklemlerle: adım adım</h3>
+<div class="stepper" id="st-max">
+<div class="stp"><p><b>1. Kararlı akımlar için Ampère yasası.</b></p><div class="eq"><span>\[\nabla\times\mathbf B=\mu_0\mathbf J\]</span></div><p>Zamanla değişmeyen akımlar için doğru ve deneyle doğrulanmış.</p></div>
+<div class="stp"><p><b>2. Diverjansını alın.</b> Bir rotasyonelin diverjansı her zaman sıfır.</p><div class="eq"><span>\[\nabla\cdot(\nabla\times\mathbf B)=0\ \Longrightarrow\ \nabla\cdot\mathbf J=0\]</span></div><p>Bu, her küçük hacme giren akımın çıkan akıma eşit olduğunu söylüyor.</p></div>
+<div class="stp"><p><b>3. Yük korunumuyla karşılaştırın.</b></p><div class="eq"><span>\[\frac{\partial\rho}{\partial t}+\nabla\cdot\mathbf J=0\ \Longrightarrow\ \frac{\partial\rho}{\partial t}=0\ ?!\]</span></div><p>Yük yoğunluğu hiçbir yerde değişemezdi. Ama kondansatörün levhasında yük birikiyor. Çelişki.</p></div>
+<div class="stp"><p><b>4. Eksik terimi Gauss yasasından bulun.</b></p><div class="eq"><span>\[\nabla\cdot\mathbf E=\frac{\rho}{\varepsilon_0}\ \Longrightarrow\ \nabla\cdot\Bigl(\varepsilon_0\frac{\partial\mathbf E}{\partial t}\Bigr)=\frac{\partial\rho}{\partial t}=-\nabla\cdot\mathbf J\]</span></div><p>Diverjansı tam olarak \(-\nabla\cdot\mathbf J\) olan bir nicelik bulduk. Onu akıma eklersek toplamın diverjansı sıfır olur.</p></div>
+<div class="stp"><p><b>5. Düzeltilmiş yasa.</b></p><div class="eq"><span>\[\nabla\times\mathbf B=\mu_0\mathbf J+\mu_0\varepsilon_0\frac{\partial\mathbf E}{\partial t}\]</span></div><p>Bir uyarı: Bu hesap eklenen terimin yalnızca diverjansını sabitliyor. Diverjansı sıfır olan başka bir terim de eklenebilirdi. Doğru seçimi deney ve Lorentz simetrisi yapıyor. Tutarlılık argümanları seçenekleri daraltır ama genelde tek başına teoriyi sabitlemez.</p></div>
+<div class="nav"><button class="btn" data-d="-1">← Geri</button><div class="dots"></div><button class="btn" data-d="1">İleri →</button></div>
+</div>
+<h3 class="sub">Ödül: ışık</h3>
+<p>Yük ve akım olmayan bir bölgede Faraday yasasının rotasyonelini alıp düzeltilmiş yasayı kullanınca bir dalga denklemi çıkıyor. Dalganın hızı iki laboratuvar sabitinden hesaplanıyor.</p>
+<div class="eq"><span>\[\nabla^2\mathbf E-\mu_0\varepsilon_0\,\frac{\partial^2\mathbf E}{\partial t^2}=0\]</span><span>\[c=\frac{1}{\sqrt{\mu_0\varepsilon_0}}\approx3\times10^8\ \text{m/s}\]</span></div>
+<div class="figwrap">
+<div class="fig short"><canvas id="wave" aria-label="Elektromanyetik dalga"></canvas></div>
+<div class="ctrl">
+<label for="f-wave">Frekans <output id="o-wave"></output></label>
+<input type="range" id="f-wave" min="6" max="18" step="0.05" value="14.7">
+<dl class="read" id="r-wave"></dl>
+<div class="seg"><button id="dc-wave" aria-pressed="true">Yer değiştirme akımı açık</button></div>
+<p class="note">Terimi kaldırın: dalga söner. Dalga boyunun ekrandaki ölçeği temsilî.</p>
+</div>
+</div>
+<div class="why"><h3>Neden bu kadar çarpıcı?</h3><p>\(\mu_0\) ve \(\varepsilon_0\) bobinlerle ve kondansatörlerle ölçülen sayılar; içlerinde ışıkla ilgili hiçbir bilgi yok. Yine de birleşimleri ışık hızını veriyor. Maxwell bunu görünce ışığın elektromanyetik bir dalga olduğunu öne sürdü; Hertz yirmi yılı aşkın bir süre sonra radyo dalgalarıyla doğruladı.</p></div>
+<div class="warn">Bu türetimde \(\hbar\) yok. Bulduğumuz şey klasik dalga; foton, alan kuantize edilince geliyor: frekansı \(\omega\) olan modun bir kuantumu \(\hbar\omega\) enerji taşıyor. String'de de sıra aynı olacak: önce klasik hareket, sonra kuantizasyon, parçacıklar ancak o zaman.</div>
+</section>
+
+<section class="sec" id="ch1-planck"><h2>Planck ölçeği: kütleçekim ne zaman güçlenir?</h2>
+<p>Kuantum mekaniği ve genel görelilik kendi alanlarında olağanüstü başarılı, ama dünyayı farklı anlatıyorlar. Madde kuantum belirsizliğine tabi, geometriyi de madde belirliyor; o halde geometri de belirsiz olmalı. Bu etkiler ne zaman önemli olur? Cevap üç sabitten gelen tek bir ölçekte.</p>
+<h3 class="sub">Ölçeği kendiniz kurun</h3>
+<p>\(G_N^{\,a}\,c^{\,b}\,\hbar^{\,d}\) çarpımının enerji boyutunda olması için üsler ne olmalı? Kaydırıcıları oynatın; üç boyutun üçü de hedefe oturunca bulmuşsunuz demektir.</p>
+<div class="figwrap">
+<div class="ctrl" id="dimgame">
+<label for="da"><span>a (\(G_N\) üssü)</span> <output id="dao"></output></label><input type="range" id="da" min="-2" max="2" step="0.5" value="0">
+<label for="db"><span>b (\(c\) üssü)</span> <output id="dbo"></output></label><input type="range" id="db" min="-4" max="6" step="0.5" value="1">
+<label for="dd"><span>d (\(\hbar\) üssü)</span> <output id="ddo"></output></label><input type="range" id="dd" min="-2" max="2" step="0.5" value="0">
+</div>
+<div class="ctrl">
+<div class="bars" id="dim-m"></div>
+<div class="verdict" id="dim-v"></div>
+<button class="btn" id="dim-show" type="button">Çözümü göster</button>
+</div>
+</div>
+<div class="eq"><span>\[E_{\rm P}=\sqrt{\frac{\hbar c^5}{G_N}}\approx1{,}22\times10^{19}\ \text{GeV}\]</span><span>\[\ell_{\rm P}=\sqrt{\frac{\hbar G_N}{c^3}}\approx1{,}6\times10^{-35}\ \text{m}\]</span></div>
+<h3 class="sub">Kütleçekimin gücü enerjiyle büyür</h3>
+<p>Boyutsuz bir etkin bağlaşım kuralım: \(g_{\rm eff}\sim G_NE^2/\hbar c^5=(E/E_{\rm P})^2\). Enerjiyi kaydırın; alttaki çubuklar perturbasyon açılımının ilk terimlerini gösteriyor.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="planck" role="img" aria-label="Enerji ölçekleri"></svg></div>
+<div class="ctrl">
+<label for="e-planck">Süreç enerjisi <output id="o-planck"></output></label>
+<input type="range" id="e-planck" min="-4" max="19.2" step="0.05" value="4.13">
+<div class="big" id="g-planck"></div>
+<div class="verdict" id="v-planck"></div>
+<div class="seg" id="p-planck"></div>
+</div>
+</div>
+<div class="figwrap wide"><div class="bars" id="series"></div></div>
+<div class="why"><h3>Neden açılım çöküyor?</h3><p>Kuantum alan teorisinde bir süreci bir seri olarak hesaplarız: en basit terim, sonra bağlaşımın bir kuvvetiyle çarpılmış düzeltme, sonra ikinci kuvvetiyle çarpılmış. Bağlaşım küçükse her terim öncekinden küçük kalır ve birkaç terimde durabiliriz. Elektromanyetizmanın bağlaşımı yaklaşık 1/137 ve neredeyse sabit. Kütleçekiminki ise enerjinin karesiyle büyüyor, çünkü \(G_N\)'nin boyutu var: kütlenin ters karesi. Planck ölçeğinde bütün terimler aynı büyüklüğe geliyor. Üstelik her mertebede yeni bir sonsuzluk ve onu gidermek için yeni bir parametre gerekiyor: Kütleçekim perturbatif olarak renormalize edilemiyor.</p></div>
+<div class="warn">Bu, düşük enerjide hesap yapılamaz demek değil: Etkin alan teorisiyle kütleçekimin kuantum düzeltmeleri Planck ölçeğinin çok altında hesaplanabiliyor. Bu, tam teorinin imkânsız olduğu anlamına da gelmiyor. İki yol var: ya açılımın ötesindeki tam teori sorunu kendi içinde çözüyor, ya da kısa mesafede temel betimleme değişiyor. String teorisi ikinci yolu deniyor.</div>
+</section>
+
+<section class="sec" id="ch1-string"><h2>String fikri ve graviton</h2>
+<p>Temel nesneler nokta değil, bir boyutlu string'ler olsun. Noktasal parçacık uzayzamanda bir çizgi (worldline) çizer, string bir yüzey (worldsheet) tarar. String teorisinin bütün matematiği bu yüzey üzerinde kurulacak: Yüzeydeki noktaları \((\tau,\sigma)\) ile etiketleyeceğiz, yüzeyin uzayzamandaki yerini \(X^\mu(\tau,\sigma)\) verecek.</p>
+<div class="figwrap">
+<div class="fig tall"><canvas id="ws" aria-label="Worldline ve worldsheet"></canvas></div>
+<div class="ctrl">
+<div class="seg" id="ws-mode"><button data-m="0" aria-pressed="false">Nokta</button><button data-m="1" aria-pressed="false">Açık string</button><button data-m="2" aria-pressed="true">Kapalı string</button></div>
+<div class="seg"><button id="ws-int" aria-pressed="false">Etkileşim</button></div>
+<div class="info" id="ws-info"></div>
+</div>
+</div>
+<h3 class="sub">Neden string etkileşiminde ayrıcalıklı bir nokta yok?</h3>
+<p>Noktasal parçacıklarda üç çizgi tek bir noktada buluşur ve kuantum alan teorisindeki sonsuzlukların çoğu bu sıfır mesafeli tepelerden gelir. İki string birleşirken ise yüzey düzgün kalır. Aşağıda yüzeyin bir kesiti var: alt tarafta iki bacak, üstte tek gövde. Bir gözlemci için “şimdi” çizgileri yataydır; hareket eden bir gözlemci için eğik. String'lerin birleştiği an, “şimdi” çizgisinin bacakların arasındaki kemere ilk değdiği nokta.</p>
+<div class="figwrap">
+<div class="fig"><svg id="pants" role="img" aria-label="Eşzamanlılık kesitleri ve birleşme noktası"></svg></div>
+<div class="ctrl">
+<label for="pb">Gözlemcinin hızı β <output id="pbo"></output></label>
+<input type="range" id="pb" min="-0.8" max="0.8" step="0.01" value="0">
+<div class="verdict" id="pv"></div>
+</div>
+</div>
+<div class="why"><h3>Bu neden önemli?</h3><p>Birleşme noktası gözlemciden gözlemciye kayıyor; yüzeyin üzerinde herkesin “etkileşim burada oldu” diyeceği bir nokta yok. Etkileşim uzayzamanda yayılmış durumda. String teorisinin kısa mesafede noktasal teorilerden farklı davranmasının sezgisel nedeni bu. Sezgi, ispat değil: Sonsuzlukların gerçekten kaybolduğunu görmek için kuantum hesabı gerekiyor.</p></div>
+<h3 class="sub">Neden farklı parçacıklar?</h3>
+<p>Bir string bir tel gibi titreşebilir. Kipleri seçin. Kuantum teoride her kip bir harmonik osilatör; bir kipe enerji kuantumları eklemek string'i daha yüksek bir duruma çıkarır ve farklı durumlar farklı parçacıklar olarak görünür.</p>
+<div class="figwrap">
+<div class="fig short"><canvas id="harm" aria-label="String titreşim kipleri"></canvas></div>
+<div class="ctrl">
+<div class="seg" id="harm-t"><button data-t="0" aria-pressed="true">Açık</button><button data-t="1" aria-pressed="false">Kapalı</button></div>
+<label for="harm-n">Kip n <output id="harm-no"></output></label>
+<input type="range" id="harm-n" min="1" max="6" step="1" value="1">
+<p class="note" style="margin:0">Kip n'ye bir kuantum eklemek string'i N = n seviyesine çıkarır.</p><div class="fig short" style="min-height:190px"><svg id="ladder" role="img" aria-label="Kütle merdiveni"></svg></div>
+</div>
+</div>
+<div class="warn">Tel benzetmesi yalnızca bir nesnenin birçok kipi olabileceğini anlatıyor. Spin, yük ve etkileşimler benzetmeden çıkmaz; string'in hareket denkleminden ve kuantizasyonundan hesaplanır. Merdivendeki kütle formülünü dönemin ortasında kendimiz türeteceğiz.</div>
+<h3 class="sub">Graviton: bir kusurun keşfe dönüşmesi</h3>
+<p>String teorisi 1968'de güçlü etkileşimi anlamak için doğdu: Veneziano'nun hadron saçılma formülünün titreşen bir string'den geldiği anlaşıldı. Ama spektrumda kütlesiz, spini 2 olan bir durum vardı ve hadronlar arasında böyle bir parçacık yoktu. 1974'te Scherk ve Schwarz, ayrıca Yoneya, bunun graviton olabileceğini öne sürdü.</p>
+<div class="why"><h3>Bir parçacığa neden “graviton” diyebiliriz?</h3><p>İki ayrı kontrol gerekiyor. Birincisi spektrum: kütlesiz mi, spini 2 mi? Kütleçekim uzun menzilli olduğu için kütlesiz, metrik iki indisli olduğu için spin 2 olmalı. İkincisi dinamik: düşük enerjideki etkileşimleri Einstein kütleçekimini veriyor mu? String teorisinde ikisi de sağlanıyor. Kütleçekim teoriye eklenmiyor, tutarlılığından çıkıyor. Bu, doğanın bu teoriyi seçtiğini göstermez; o üçüncü sütunun işi.</p></div>
+</section>
+
+<section class="sec" id="ch1-boyut"><h2>Ekstra boyutlar ve Kaluza–Klein kopyaları</h2>
+<p>Kuantum tutarlılık uzayzamanın boyutunu sabitliyor: bosonic string için 26, superstring için 10. Kabaca nedeni şu: Her titreşim kipinin kuantum mekaniğinden gelen bir taban enerjisi var ve bunların toplamı boyut sayısına bağlı. Fotonun kütlesiz çıkması bu toplamın belirli bir değer almasını istiyor; bu da boyutu sabitliyor. Hesabı ilerleyen haftalarda yapacağız.</p>
+<h3 class="sub">Neden fazla boyutları görmüyoruz?</h3>
+<p>Çünkü küçük ve kıvrılmış olabilirler. Uzaktan bir çizgi gibi görünen bahçe hortumu, yakından bakınca çizgi çarpı çemberdir. Yaklaşın:</p>
+<div class="figwrap">
+<div class="fig short"><svg id="hose" role="img" aria-label="Bahçe hortumu"></svg></div>
+<div class="ctrl">
+<label for="hz">Yakınlaştırma <output id="hzo"></output></label>
+<input type="range" id="hz" min="0" max="1" step="0.01" value="0.15">
+<p class="note">Kıvrılmış yönü görmek için o yönün büyüklüğünden kısa bir dalga boyuna, yani yüksek enerjiye ihtiyaç var.</p>
+</div>
+</div>
+<h3 class="sub">Neden enerji kuantize oluyor?</h3>
+<p>Bir parçacık yarıçapı \(R\) olan bir çember etrafında hareket ediyorsa dalga fonksiyonu bir tur sonra kendine dönmeli. Dalga sayısını değiştirin: Tam sayı olmayan bir değerde dalga başladığı yere uymuyor.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="circ" role="img" aria-label="Çember üzerinde dalga"></svg></div>
+<div class="ctrl">
+<label for="cn">Dalga sayısı n <output id="cno"></output></label>
+<input type="range" id="cn" min="0" max="4" step="0.05" value="2">
+<div class="verdict" id="cv"></div>
+</div>
+</div>
+<div class="eq"><span>\[\psi(y+2\pi R)=\psi(y)\ \Rightarrow\ p_y=\frac{n\hbar}{R}\]</span><span>\[E_n\sim\frac{|n|\,\hbar c}{R}\]</span></div>
+<p>Çember yönündeki bu momentum dört boyutlu bir gözlemciye ek kütle gibi görünür: Her parçacığın ağır kopyaları oluşur. Yarıçapı değiştirin.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="kk" role="img" aria-label="Kaluza-Klein kütle kulesi"></svg></div>
+<div class="ctrl">
+<label for="r-kk">Yarıçap R <output id="o-kk"></output></label>
+<input type="range" id="r-kk" min="-35" max="-15" step="0.05" value="-18">
+<div class="big" id="e-kk"></div>
+<div class="verdict" id="v-kk"></div>
+</div>
+</div>
+<div class="warn">Fikir string teorisinden eski: Kaluza 1921'de beşinci bir boyutla kütleçekim ve elektromanyetizmayı birleştirmeye çalıştı, Klein 1926'da bu boyutun neden görünmediğini bu argümanla açıkladı. Dikkat: Kıvrılmış boyutlar silinmez. Teorinin tutarlılığında on boyutun hepsi yer alır; değişen yalnızca düşük enerjili bir deneyin erişebildiği uyarılmalar.</div>
+</section>
+
+<section class="sec" id="ch1-teori"><h2>Beş teori, duality ve M-theory</h2>
+<p>On boyutta beş tutarlı perturbatif superstring teorisi var. Birleşme arayan biri için kötü haber gibi. Ama beş, evren saymıyor: küçük bağlaşımda yapılan beş ayrı açılımı sayıyor. 1995'te bunların duality'lerle birbirine bağlandığı anlaşıldı.</p>
+<div class="figwrap">
+<div class="fig"><svg id="web" role="img" aria-label="Duality ağı"></svg></div>
+<div class="info" id="web-info"></div>
+</div>
+<h3 class="sub">Neden bir string küçük bir çemberi büyükten ayıramaz?</h3>
+<p>Noktasal bir parçacık bir çember etrafında yalnızca dolaşabilir. Kapalı bir string ayrıca çemberin etrafına <b>sarılabilir</b>. Dolaşma enerjisi \(n/R\) gibi, sarılma enerjisi \(wR/\alpha'\) gibi davranıyor. Yarıçapı değiştirin ve spektrumu karşılaştırın.</p>
+<div class="figwrap">
+<div class="fig"><svg id="tdual" role="img" aria-label="T-duality spektrumu"></svg></div>
+<div class="ctrl">
+<label for="tR">R / √α′ <output id="tRo"></output></label>
+<input type="range" id="tR" min="-0.7" max="0.7" step="0.01" value="0.3">
+<dl class="read" id="tr-r"></dl>
+<p class="note">Birimler: √α′ = 1. Yalnız momentum ve sarılma katkısı: E = √((n/R)² + (wR)²). Titreşimler eklenmedi.</p>
+</div>
+</div>
+<div class="why"><h3>Sonuç: T-duality</h3><p>\(R\) yerine \(\alpha'/R\) koyup dolaşma ile sarılma sayılarını yer değiştirirseniz spektrum aynı kalıyor. String'in gözünde yarıçapı \(R\) olan çember ile yarıçapı \(\alpha'/R\) olan çember aynı fizik. String ölçeğinden kısa uzunluklar bir anlamda fiziksel anlamını yitiriyor.</p></div>
+<h3 class="sub">Güçlü bağlaşımda on birinci boyut</h3>
+<p>String bağlaşımı \(g_s\) elle konan bir sayı değil: Dilaton alanının değerinden geliyor, \(g_s=e^{\Phi_0}\). Type IIA'nın bağlaşımını büyütünce yarıçapı \(R_{11}=g_s\ell_s\) olan yeni bir boyut açılıyor.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="m11" role="img" aria-label="On birinci boyut"></svg></div>
+<div class="ctrl">
+<label for="gs"><span>g<sub>s</sub></span> <output id="gso"></output></label>
+<input type="range" id="gs" min="-2" max="1" step="0.01" value="-1">
+<div class="verdict" id="gsv"></div>
+</div>
+</div>
+<div class="warn">“On mu, on bir mi?” Çelişki yok. On boyut, küçük bağlaşımda worldsheet üzerinden kurulan tarifin tutarlılık şartı; on birinci boyut güçlü bağlaşımda ortaya çıkan bir yapı. M-theory'nin tam bir tanımı henüz yok; düşük enerji sınırı on bir boyutlu supergravity.</div>
+</section>
+
+<section class="sec" id="ch1-brane"><h2>D-brane'ler</h2>
+<p>Açık string'in iki ucu var ve uçlarda ne olduğunu söylememiz gerekiyor. Uçların bir yüzey üzerinde kalmaya zorlandığı sınır koşullarına Dirichlet koşulları deniyor; o yüzey D-brane. D\(p\)-brane'in \(p\) uzaysal boyutu var. Brane'ler pasif zemin değil, enerjileri olan dinamik nesneler: gerilimleri \(T_p\propto1/g_s\), yani küçük bağlaşımda çok ağırlar. 1995'ten önce gözden kaçmalarının nedeni bu.</p>
+<h3 class="sub">Neden üst üste gelen brane'lerde simetri büyür?</h3>
+<p>İki brane arasında gerilmiş bir string'in enerjisi, gerilim çarpı uzunluk. Brane'leri yaklaştırın.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="brane" role="img" aria-label="İki D-brane arasında gerilmiş string"></svg></div>
+<div class="ctrl">
+<label for="d-brane">Uzaklık d <output id="o-brane"></output></label>
+<input type="range" id="d-brane" min="0" max="4" step="0.02" value="1.6">
+<div class="big" id="m-brane"></div>
+<div class="verdict" id="v-brane"></div>
+</div>
+</div>
+<div class="eq"><span>\[m=T_{\rm str}\,d=\frac{d}{2\pi\alpha'}\qquad(\hbar=c=1)\]</span></div>
+<h3 class="sub">Neden kütleçekim zayıf görünebilir?</h3>
+<p>Madde ve ışık brane'e yapışık, kütleçekim ise bütün boyutlarda yayılıyor olabilir. Gauss yasasını düşünün: \(3+n\) uzay boyutunda kuvvet çizgileri daha büyük bir yüzeye yayılır ve kuvvet \(1/r^{2+n}\) ile azalır. Ekstra boyutlar \(R\) büyüklüğündeyse, \(R\)'den uzak mesafelerde bildiğimiz \(1/r^2\) geri gelir ama zayıflamış olarak.</p>
+<div class="figwrap">
+<div class="fig"><svg id="gauss" role="img" aria-label="Kuvvetin uzaklıkla azalması"></svg></div>
+<div class="ctrl">
+<label for="gn">Ekstra boyut sayısı n <output id="gno"></output></label>
+<input type="range" id="gn" min="0" max="6" step="1" value="2">
+<p class="note">Eksenler logaritmik, R = 1. Bu tür modellerde Newton yasası milimetrenin altında test edildi; birkaç on mikrometreye kadar sapma bulunmadı.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" id="ch1-karadelik"><h2>Kara delik entropisi</h2>
+<p>1970'lerin başında Bekenstein şunu sordu: Bir kutu sıcak gazı kara deliğe atarsanız gazın entropisi evrenden kaybolmuş gibi görünür. Termodinamiğin ikinci yasası kurtulacaksa kara deliğin kendisinin bir entropisi olmalı. Hawking başta itiraz etti, sonra kuantum alanlarını kara delik geometrisinde inceleyip kara deliklerin ışıdığını buldu ve katsayıyı sabitledi.</p>
+<div class="eq"><span>\[S_{\rm BH}=\frac{k_B\,A}{4\,\ell_{\rm P}^2}\]</span><span>\[r_s=\frac{2G_NM}{c^2}\]</span><span>\[T_H=\frac{\hbar c^3}{8\pi G_NMk_B}\]</span></div>
+<div class="figwrap">
+<div class="fig short"><svg id="bh" role="img" aria-label="Kara delik büyüklüğü"></svg></div>
+<div class="ctrl">
+<label for="m-bh">Kütle <output id="o-bh"></output></label>
+<input type="range" id="m-bh" min="-19" max="10" step="0.05" value="0">
+<div class="seg" id="p-bh"></div>
+<dl class="read" id="r-bh"></dl>
+<div class="verdict" id="v-bh"></div>
+</div>
+</div>
+<h3 class="sub">Neden alan, hacim değil?</h3>
+<p>Sıradan bir cismin entropisi madde miktarıyla, yani kütleyle orantılı büyür. Kara deliğin entropisi ufuk alanıyla, yani kütlenin karesiyle büyüyor. Grafik iki eğilimi karşılaştırıyor; işaret yukarıdaki kaydırıcıya bağlı.</p>
+<div class="figwrap wide"><div class="fig short"><svg id="sm" role="img" aria-label="Entropi kütle karşılaştırması"></svg></div></div>
+<div class="why"><h3>Bu sayı neyi sayıyor?</h3><p>İstatistik fizikte entropi mikrodurumların sayısı: \(S=k_B\ln\Omega\). Genel görelilikte bir kara delik yalnızca kütlesi, yükü ve dönmesiyle belirleniyor; sayılacak iç yapı yok. Bu kadar çok durumun ne olduğunu ancak kuantum kütleçekim söyleyebilir. Bu yüzden kara delik entropisi her aday teorinin geçmesi gereken bir sınav. Durum sayısını baştan “alana göre şu kadar” diye tanımlamak hile olur; bağımsız olarak saymak gerekir.</p></div>
+<div class="flow">
+<div class="box"><h4>Zayıf bağlaşım</h4><p>D-brane'ler ve aralarında gerilmiş açık string'ler. Kara delik yok. Kuantum durumları tek tek sayılıyor: \(S_{\rm micro}=k_B\ln\Omega\).</p></div>
+<div class="arrow">bağlaşım artar ⟷<br>durum sayısı korunur</div>
+<div class="box"><h4>Güçlü bağlaşım</h4><p>Aynı yüklerle bir kara delik. Ufuk alanından \(S_{\rm BH}=k_BA/4\ell_{\rm P}^2\).</p></div>
+</div>
+<p class="cap">Strominger ve Vafa (1996): belirli supersymmetric kara deliklerde iki sayı, dörtte bir katsayısı dahil, eşleşti. Eşleşmeyi anlamlı kılan, supersymmetry sayesinde durum sayısının bağlaşım değişirken korunması. Gerçek astrofiziksel kara delikler için bu kesinlikte bir sayım henüz yok.</p>
+</section>
+
+<section class="sec" id="ch1-ads"><h2>AdS/CFT ve iki ayrı yaklaşım</h2>
+<p>1997'de Maldacena şunu önerdi: AdS\(_5\times S^5\) üzerindeki Type IIB string teorisi, dört boyutlu \(\mathcal N=4\ SU(N)\) gauge teorisiyle eşdeğer. Kütleçekimli teori içeride, kütleçekimsiz teori sınırda yaşıyor; bir boyut eksik.</p>
+<div class="figwrap">
+<div class="fig"><svg id="holo" role="img" aria-label="AdS silindiri"></svg></div>
+<div class="info"><h3>Neden “holografi”?</h3><p>İçerideki bütün kütleçekim fiziği, bir boyut eksik sınır teorisinde kodlanmış; iki boyutlu bir hologramın üç boyutlu bir görüntü taşıması gibi. İlk ipucu kara delik entropisinin hacimle değil alanla orantılı olmasıydı. Bu, yaşadığımız dünyanın sahte olduğu anlamına gelmiyor.</p></div>
+</div>
+<h3 class="sub">Klasik kütleçekim ne zaman yeterli?</h3>
+<p>Duality iki tam kuantum teorisi arasında. Kütleçekim tarafında klasik Einstein denklemlerini kullanmak ek bir yaklaşım ve iki ayrı şart istiyor: string'in boyu geometriye göre küçük olmalı (\(\alpha'/L^2\ll1\)), loop'lar küçük olmalı (\(g_s\ll1\)). Haritada bir nokta seçin.</p>
+<div class="figwrap">
+<div class="fig"><svg id="reg" role="img" aria-label="Yaklaşım haritası"></svg></div>
+<div class="info" id="reg-info"></div>
+</div>
+<div class="warn">Eğrilik string ölçeğine ulaşınca, örneğin erken evrende ya da bir tekilliğin yakınında, Einstein denklemleri yetmez. Bu, string teorisinin tekillikleri çözdüğü anlamına gelmiyor; orada tam teoriyle hesap gerektiğini söylüyor.</div>
+</section>
+
+<section class="sec" id="ch1-quiz"><h2>Kendini dene</h2>
+<p>Sekiz soru. Bir şık seçince doğru cevap ve kısa açıklama görünür.</p>
+<div class="quiz" id="quiz1"></div>
+<p class="score" id="score1"></p>
+</section>
+</main>
+</div>
+</div>
+
+<!-- ============ CHAPTER 2 ============ -->
+<div id="v-ch2" class="view">
+<div class="chap">
+<nav class="rail" aria-label="Chapter 2 bölümleri">
+<h2>Chapter 2</h2>
+<a href="#ch2-birim">Birimler</a>
+<a href="#ch2-aralik">Aralık ve ışık konisi</a>
+<a href="#ch2-lorentz">Lorentz dönüşümleri</a>
+<a href="#ch2-hiz">Rapidity ve hız toplama</a>
+<a href="#ch2-proper">Proper time</a>
+<a href="#ch2-lc">Light-cone koordinatları</a>
+<a href="#ch2-enerji">Enerji ve momentum</a>
+<a href="#ch2-lcenerji">Light-cone enerjisi</a>
+<a href="#ch2-boyut">D boyut</a>
+<a href="#ch2-quiz">Kendini dene</a>
+</nav>
+<main class="content">
+<header class="chead" id="ch2"><h1>Chapter 2: Özel görelilik, light-cone koordinatları ve enerji–momentum</h1>
+<p>String'in kuantizasyonunda kullanacağımız dil. İşaret kuralı dönem boyunca aynı: \(\eta_{\mu\nu}=\mathrm{diag}(-1,+1,+1,+1)\), \(-\mathrm{d}s^2=\eta_{\mu\nu}\,\mathrm{d}x^\mu\mathrm{d}x^\nu\). Başka bir kaynak açtığınızda ilk iş imzaya bakın; bir eksi işaretini yanlış yere koymak, ileride fotonun kütlesini sıfırdan farklı çıkarır.</p></header>
+
+<section class="sec" id="ch2-birim"><h2>Birimler: neyi seçebiliriz?</h2>
+<p>Bir niceliğin boyutu, birim değişince nasıl ölçekleneceğini söylüyor. Mekanikte üç temel boyut yeter: uzunluk \(L\), kütle \(M\), zaman \(T\).</p>
+<div class="scroll"><table class="dim"><thead><tr><th>Nicelik</th><th>Tanım</th><th>Boyut</th></tr></thead><tbody>
+<tr><td>Enerji</td><td>kuvvet × yol</td><td>\(ML^2T^{-2}\)</td></tr>
+<tr><td>Momentum</td><td>kütle × hız</td><td>\(MLT^{-1}\)</td></tr>
+<tr><td>\(\hbar\)</td><td>enerji × zaman</td><td>\(ML^2T^{-1}\)</td></tr>
+<tr><td>\(G_N\)</td><td>\(F r^2/m^2\)</td><td>\(L^3M^{-1}T^{-2}\)</td></tr>
+<tr><td>Yük (Gaussian)</td><td>\(F=q_1q_2/r^2\)</td><td>\(M^{1/2}L^{3/2}T^{-1}\)</td></tr>
+<tr><td>\(\alpha'\)</td><td>string gerilimi \(1/2\pi\alpha'\)</td><td>\(L^2\) (\(c=\hbar=1\))</td></tr>
+</tbody></table></div>
+<div class="why"><h3>Neden \(c=\hbar=1\) bilgi kaybettirmez?</h3><p>Birim seçmek bir niceliğin sayısal değerini 1 yapar, oranları değiştirmez. Üç kütleniz varsa ve birini birim seçerseniz geriye iki oran kalır; o oranlar ölçülebilir fizik. Proton ile elektronun kütle oranı (yaklaşık 1836) ya da ince yapı sabiti (yaklaşık 1/137) her birim sisteminde aynı. \(c=\hbar=1\) seçince yalnızca formüllerden \(c\) ve \(\hbar\) düşer; geri çevirmek için \(\hbar c\approx197{,}3\) MeV·fm yeterli.</p></div>
+<div class="figwrap">
+<div class="ctrl" style="grid-column:1/-1">
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,180px),1fr));gap:12px">
+<label for="u-val">Değer<input type="number" id="u-val" value="0.511" step="any"></label>
+<label for="u-unit">Birim<select id="u-unit"><option value="eV">eV</option><option value="MeV" selected>MeV</option><option value="GeV">GeV</option><option value="fm">fm (uzunluk)</option><option value="m">m (uzunluk)</option><option value="s">s (zaman)</option><option value="kg">kg (kütle)</option><option value="K">K (sıcaklık)</option></select></label>
+</div>
+<div class="seg" id="p-unit"></div>
+<div class="stats" id="r-unit"></div>
+<p class="note">Uzunluk ve zaman karşılıkları \(\hbar c/E\) ve \(\hbar/E\); uzunluk, parçacığın indirgenmiş Compton dalga boyu.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" id="ch2-aralik"><h2>Aralık ve ışık konisi</h2>
+<p>Bir olay uzayda bir yer ve zamanda bir an: \(x^\mu=(ct,x,y,z)\). Zamanın önüne \(c\) koyunca dört bileşen de uzunluk boyutunda. İki olay arasındaki aralık bütün eylemsiz gözlemciler için aynı.</p>
+<div class="eq"><span>\[\Delta s^2=(c\Delta t)^2-|\Delta\vec x|^2\]</span></div>
+<div class="why"><h3>Neden aralık değişmez?</h3><p>Işık hızının bütün gözlemciler için aynı olmasından. Bir ışık sinyalinin iki ucunu düşünün: Bir gözlemci için ışık \(c\Delta t\) sürede \(c\Delta t\) yol almış, aralık sıfır. Öbür gözlemci de ışık hızını \(c\) ölçtüğüne göre onun için de sıfır. Dönüşümler doğrusal ve uzay her yönde aynıysa, sıfır olmayan aralıklar da korunuyor.</p></div>
+<p>Işık konisi bu değişmezliğin resmi. Konuyu çevirip bakın:</p>
+<div class="figwrap">
+<div class="fig"><svg id="cone3" role="img" aria-label="Üç boyutlu ışık konisi"></svg></div>
+<div class="ctrl">
+<label for="c3">Bakış açısı <output id="c3o"></output></label>
+<input type="range" id="c3" min="-1.4" max="1.4" step="0.01" value="0.5">
+<p class="note">İki uzay ve bir zaman boyutu. Koninin içi gelecek ve geçmiş, dışı “başka yer”. Nokta koninin içindeyse orijinden ona bir sinyal ulaşabilir.</p>
+</div>
+</div>
+<p style="margin-top:18px">Aralığın işareti olay çiftinin türünü belirliyor. Noktayı sürükleyin:</p>
+<div class="figwrap">
+<div class="fig"><svg id="mk-int" role="img" aria-label="Işık konisi"></svg></div>
+<div class="ctrl"><dl class="read" id="r-int"></dl><div class="verdict" id="v-int"></div></div>
+</div>
+<h3 class="sub">İndisler ve metrik</h3>
+<p>Alt indisli bileşenler zamanın işaretini değiştirir: \(x_\mu=\eta_{\mu\nu}x^\nu\). Skalar çarpım \(a\cdot b=-a^0b^0+\vec a\cdot\vec b\) ve aralık \(-\mathrm{d}s^2=\mathrm{d}x^\mu\mathrm{d}x_\mu\). Tekrarlanan indis üzerinden toplam alınır; bu toplamı artık yazmıyoruz.</p>
+<div class="why"><h3>Neden metrik simetrik?</h3><p>Aralık yalnızca \(\eta_{\mu\nu}\,\mathrm{d}x^\mu\mathrm{d}x^\nu\) içinde görünüyor. Antisymmetric bir parça \(A_{\mu\nu}\) bu ifadede kendi eksisine eşit çıkar, yani katkısı sıfır. Aralık onu göremez, o yüzden baştan atarız. Bu adım Lorentz koşulunu türetirken tekrar işe yarayacak.</p></div>
+</section>
+
+<section class="sec" id="ch2-lorentz"><h2>Lorentz dönüşümleri</h2>
+<p>Aralığı koruyan doğrusal dönüşümler. Önce en çarpıcı sonucunu, zaman genişlemesini, bir saatle görelim.</p>
+<h3 class="sub">Neden hareket eden saat yavaş işler?</h3>
+<p>Işık saati: İki ayna arasında gidip gelen bir foton. Saatle birlikte hareket eden için foton dikey gidip gelir. Yerdeki gözlemci için saat yana kayarken foton çapraz bir yol izler. Işık hızı iki gözlemci için de aynı olduğundan, uzun yol daha uzun sürer.</p>
+<div class="figwrap">
+<div class="fig"><canvas id="lclock" aria-label="Işık saati"></canvas></div>
+<div class="ctrl">
+<label for="lcb">Saatin hızı β <output id="lcbo"></output></label>
+<input type="range" id="lcb" min="0" max="0.95" step="0.01" value="0.6">
+<dl class="read" id="lcr"></dl>
+</div>
+</div>
+<div class="eq"><span>\[(c\,\Delta t)^2=(c\,\Delta t_0)^2+(v\,\Delta t)^2\ \Longrightarrow\ \Delta t=\gamma\,\Delta t_0,\quad \gamma=\frac{1}{\sqrt{1-\beta^2}}\]</span></div>
+<h3 class="sub">Boost diyagramı</h3>
+<div class="eq"><span>\[x'^0=\gamma(x^0-\beta x^1)\]</span><span>\[x'^1=\gamma(x^1-\beta x^0)\]</span></div>
+<p>Hareket eden gözlemcinin zaman ekseni kendi orijininin worldline'ı; uzay ekseni eşzamanlı saydığı olaylar. İki eksen bir makas gibi ışık doğrusuna doğru kapanıyor.</p>
+<div class="figwrap">
+<div class="fig tall"><svg id="mk-lor" role="img" aria-label="Boost diyagramı"></svg></div>
+<div class="ctrl">
+<label for="b-lor">β <output id="o-lor">0,60</output></label>
+<input type="range" id="b-lor" min="-0.95" max="0.95" step="0.01" value="0.6">
+<dl class="read" id="r-lor"></dl>
+</div>
+</div>
+<h3 class="sub">Neden “şimdi” gözlemciye bağlı?</h3>
+<p>Aralarında ışık konisi dışı bir ayrılık olan iki şimşek: A solda, B sağda ve biraz sonra. Hızı artırın ve hareket eden gözlemcinin eşzamanlılık çizgisini izleyin.</p>
+<div class="figwrap">
+<div class="fig"><svg id="simul" role="img" aria-label="Eşzamanlılığın göreliliği"></svg></div>
+<div class="ctrl">
+<label for="sb">β <output id="sbo"></output></label>
+<input type="range" id="sb" min="-0.9" max="0.9" step="0.01" value="0">
+<div class="verdict" id="sv"></div>
+</div>
+</div>
+<div class="why"><h3>Nedensellik neden bozulmuyor?</h3><p>Sıra yalnızca spacelike ayrılmış olaylar için değişiyor. Onların arasında hiçbir sinyal gidemez, biri ötekinin nedeni olamaz. Timelike ya da null ayrılmış olaylarda sıra bütün gözlemciler için aynı.</p></div>
+<h3 class="sub">Genel koşul</h3>
+<p>Dönüşümü bir matris olarak yazıp aralığın her vektör için korunmasını isteyin. Fark matrisi \(M\) simetrik olduğu için, her \(x\) ile iki kez çarpımının sıfır olması \(M=0\) demek. Sonuç:</p>
+<div class="eq"><span>\[\eta_{\mu\nu}L^\mu{}_\rho L^\nu{}_\sigma=\eta_{\rho\sigma}\ \Longleftrightarrow\ L^{\mathsf T}\eta L=\eta\]</span><span>\[(\det L)^2=1\]</span></div>
+<div class="warn">Determinantın \(\pm1\) olması gerekli ama yeterli değil: \(\mathrm{diag}(3,\tfrac13,1,1)\)'in determinantı 1, ama ışık konisindeki \((1,1,0,0)\) vektörünü \((3,\tfrac13,0,0)\)'a götürüyor; yeni norm \(-9+\tfrac19\neq0\). Lorentz dönüşümleri skalar çarpımı da korur: \(a'\cdot b'=a^{\mathsf T}(L^{\mathsf T}\eta L)b=a\cdot b\).</div>
+</section>
+
+<section class="sec" id="ch2-hiz"><h2>Rapidity ve hız toplama</h2>
+<p>\(\beta=\tanh\varphi\) yazınca boost bir hiperbolik dönmeye dönüşüyor: \(\gamma=\cosh\varphi\), \(\gamma\beta=\sinh\varphi\). Aynı yöndeki iki boost art arda uygulanınca rapidity'ler toplanıyor.</p>
+<div class="eq"><span>\[\beta=\frac{\beta_1+\beta_2}{1+\beta_1\beta_2}=\tanh(\varphi_1+\varphi_2)\]</span></div>
+<div class="figwrap">
+<div class="fig"><svg id="tanh" role="img" aria-label="tanh eğrisi"></svg></div>
+<div class="ctrl">
+<label for="b1-hiz">β₁ <output id="o1-hiz"></output></label><input type="range" id="b1-hiz" min="0" max="0.99" step="0.01" value="0.5">
+<label for="b2-hiz">β₂ <output id="o2-hiz"></output></label><input type="range" id="b2-hiz" min="0" max="0.99" step="0.01" value="0.5">
+<label for="n-hiz">Aynı boost'tan kaç tane <output id="on-hiz"></output></label><input type="range" id="n-hiz" min="1" max="12" step="1" value="3">
+</div>
+</div>
+<div class="figwrap wide"><div class="bars" id="bars-hiz"></div></div>
+<div class="why"><h3>Neden ışık hızı aşılamıyor?</h3><p>Rapidity'yi istediğiniz kadar büyütebilirsiniz: her boost onu biraz daha artırır. Ama \(\tanh\) eğrisi 1'e yaklaşır ve onu hiç geçmez. Işık hızı bir duvar değil, rapidity sonsuza giderken yaklaşılan bir sınır.</p></div>
+</section>
+
+<section class="sec" id="ch2-proper"><h2>Proper time</h2>
+<p>Bir parçacığın kendi saatinin ölçtüğü zaman aralıktan okunuyor: Parçacığın çerçevesinde \(\mathrm{d}\vec x=0\), aralık tamamen zaman. Hız sabit değilse bir eğri boyunca toplamak gerekiyor.</p>
+<div class="eq"><span>\[\mathrm{d}t_p=\frac{\mathrm{d}s}{c}=\frac{\mathrm{d}t}{\gamma}\]</span><span>\[\Delta t_p=\int\mathrm{d}t\,\sqrt{1-v^2/c^2}\]</span></div>
+<h3 class="sub">Müonlar yere nasıl ulaşıyor?</h3>
+<p>Atmosferin yaklaşık 15 km yukarısında doğan müonların ömrü 2,2 μs. Işık hızında bile bu sürede ancak 660 metre gidebilirler.</p>
+<div class="figwrap">
+<div class="bars" id="bars-mu"></div>
+<div class="ctrl">
+<label for="b-mu">Müonun hızı β <output id="o-mu"></output></label>
+<input type="range" id="b-mu" min="0.9" max="0.9999" step="0.0001" value="0.995">
+<dl class="read" id="r-mu"></dl>
+</div>
+</div>
+<h3 class="sub">İkizler: neden simetrik değil?</h3>
+<p>Biri Dünya'da kalıyor, öbürü gidip dönüyor. Her worldline boyunca noktalar birer yıllık proper time'ı işaretliyor. Hızı değiştirin.</p>
+<div class="figwrap">
+<div class="fig tall"><svg id="twin" role="img" aria-label="İkizler paradoksu"></svg></div>
+<div class="ctrl">
+<label for="tw">Gezgin ikizin hızı β <output id="two"></output></label>
+<input type="range" id="tw" min="0.1" max="0.95" step="0.01" value="0.6">
+<dl class="read" id="twr"></dl>
+</div>
+</div>
+<div class="why"><h3>Neden gezgin daha genç?</h3><p>İki ikiz aynı iki olay arasında farklı worldline'lar izliyor ve proper time worldline boyunca toplanıyor. Öklid geometrisinde düz çizgi en kısa yoldur; Minkowski geometrisinde metrikteki eksi işareti yüzünden düz worldline en uzun proper time'ı verir. Gezgin dönüşte çerçeve değiştiriyor; Dünya'daki ikiz hiç değiştirmiyor. Simetri bu yüzden yok. Aynı gözlem parçacığın eyleminin önündeki eksi işaretini açıklayacak.</p></div>
+</section>
+
+<section class="sec" id="ch2-lc"><h2>Light-cone koordinatları</h2>
+<p>Zamanı ve bir uzay yönünü ışık doğrultularına göre birleştiriyoruz. Sağa giden ışık için \(x^-=0\), sola giden için \(x^+=0\): Eksenler ışık doğrularının üstüne oturuyor.</p>
+<div class="eq"><span>\[x^\pm=\frac{x^0\pm x^1}{\sqrt2}\]</span><span>\[-\mathrm{d}s^2=-2\,\mathrm{d}x^+\mathrm{d}x^-+\mathrm{d}x^I\mathrm{d}x^I\]</span><span>\[a_+=-a^-,\ \ a_-=-a^+\]</span></div>
+<div class="why"><h3>Neden bu koordinatlar?</h3><p>Kütleli bir parçacıkta \(|v|<c\), dolayısıyla zaman ilerledikçe hem \(x^+\) hem \(x^-\) artar. Bu, \(x^+\)'yı zaman yerine kullanabileceğimiz anlamına geliyor. String'i kuantize ederken tam bunu yapacağız. İkinci kazanç boost'larda: Cartesian koordinatlarda zaman ile uzayı karıştıran boost, burada iki koordinatı ayrı ayrı ölçekliyor. Noktayı sürükleyin ve hızı değiştirin; kesikli halka boost edilmiş noktayı gösteriyor.</p></div>
+<div class="figwrap">
+<div class="fig tall"><svg id="mk-lc" role="img" aria-label="Light-cone koordinat ağı"></svg></div>
+<div class="ctrl">
+<label for="b-lc">β <output id="o-lc">0,00</output></label>
+<input type="range" id="b-lc" min="-0.9" max="0.9" step="0.01" value="0.4">
+<dl class="read" id="r-lc"></dl>
+</div>
+</div>
+<div class="mat">
+<div class="box eq"><span>\[\text{Cartesian: }\begin{pmatrix}x'^0\\x'^1\end{pmatrix}=\begin{pmatrix}\cosh\varphi&-\sinh\varphi\\-\sinh\varphi&\cosh\varphi\end{pmatrix}\begin{pmatrix}x^0\\x^1\end{pmatrix}\]</span></div>
+<div class="box eq"><span>\[\text{Light-cone: }\begin{pmatrix}x'^+\\x'^-\end{pmatrix}=\begin{pmatrix}e^{-\varphi}&0\\0&e^{\varphi}\end{pmatrix}\begin{pmatrix}x^+\\x^-\end{pmatrix}\]</span></div>
+</div>
+<div class="warn">Bu geçiş bir Lorentz dönüşümü değil: \(C^{\mathsf T}\eta C\) light-cone metriğinin sayılarını veriyor, \(\eta\)'yı değil. Geometri aynı, onu hesaplayan formül değişti. Koordinat değiştirmek ile gözlemci değiştirmek farklı işlemler.</div>
+<h3 class="sub">Bulmaca: ışıktan hızlı mı?</h3>
+<p>Light-cone hızı \(u_{\rm LC}=\mathrm{d}x^-/\mathrm{d}x^+=(1-\beta)/(1+\beta)\). Duran parçacıkta 1. Peki \(u_{\rm LC}=4\) olan parçacık ışıktan hızlı mı?</p>
+<div class="figwrap">
+<div class="ctrl" style="grid-column:1/-1">
+<label for="u-lc"><span>\(u_{\rm LC}\)</span> <output id="ou-lc"></output></label>
+<input type="range" id="u-lc" min="-2" max="2" step="0.01" value="0.602">
+<div class="big" id="bu-lc"></div>
+<div class="verdict" id="vu-lc"></div>
+</div>
+</div>
+</section>
+
+<section class="sec" id="ch2-enerji"><h2>Enerji ve momentum</h2>
+<p>Göreli enerji ve momentum \(E=\gamma mc^2\), \(\vec p=\gamma m\vec v\). Küçük hızlarda bildiğimiz kinetik enerjiye iniyor, ışık hızına yaklaşınca sınırsız büyüyor.</p>
+<div class="figwrap">
+<div class="fig"><svg id="ke" role="img" aria-label="Kinetik enerji karşılaştırması"></svg></div>
+<div class="ctrl">
+<label for="keb">β <output id="kebo"></output></label>
+<input type="range" id="keb" min="0" max="0.98" step="0.01" value="0.6">
+<dl class="read" id="ker"></dl>
+</div>
+</div>
+<div class="why"><h3>Neden enerji ile momentum bir dört-vektör?</h3><p>Dört sayıyı yan yana yazmak yetmez; koordinatlar gibi dönüştüklerini göstermek gerekir. Dört-hız \(u^\mu=\mathrm{d}x^\mu/\mathrm{d}t_p\): payda bir dört-vektör, paydada gözlemciden bağımsız proper time. Kütle de gözlemciden bağımsız. O halde \(p^\mu=mu^\mu=(\gamma mc,\gamma m\vec v)\) bir dört-vektör ve bir boost altında enerji ile momentum, zaman ile konum gibi birbirine karışıyor.</p></div>
+<div class="eq"><span>\[p^\mu=\Bigl(\frac Ec,\vec p\Bigr)\]</span><span>\[p^2=-m^2c^2\]</span><span>\[S=-mc\int\mathrm{d}s\]</span></div>
+<p>Kendisiyle çarpımı kütleye bağlı, hıza bağlı değil: mass-shell koşulu. Bir boost noktayı hiperbol üzerinde kaydırır, hiperbolü değiştirmez. Aynı noktanın light-cone bileşenleri 45°'lik eksenlerde görünüyor.</p>
+<div class="figwrap">
+<div class="fig"><svg id="shell" role="img" aria-label="Mass-shell hiperbolü"></svg></div>
+<div class="ctrl">
+<label for="phi-sh">Rapidity φ <output id="o-sh"></output></label>
+<input type="range" id="phi-sh" min="-2.2" max="2.2" step="0.01" value="1.1">
+<dl class="read" id="r-sh"></dl>
+<p class="note">Birimler: \(mc\). Kesikli doğrular kütlesiz parçacık.</p>
+</div>
+</div>
+<div class="warn">Eylem \(S=-mc\int\mathrm{d}s\) worldline'ın uzunluğu. Eksi işaret, düz worldline'ın en uzun proper time'ı vermesini en küçük eyleme çeviriyor. String'in Nambu–Goto eylemi aynı fikrin bir boyut yukarısı: uzunluk yerine worldsheet'in alanı.</div>
+</section>
+
+<section class="sec" id="ch2-lcenerji"><h2>Light-cone enerjisi ve Hamiltonian</h2>
+<p>Enerji, zaman ötelemelerinin jeneratörü: Düzlem dalganın zamana göre türevi enerjiyi getirir. Zaman olarak \(x^+\)'yı seçince aynı türev \(p^-\)'yi getiriyor. Mass-shell koşulunu \(p^-\) için çözünce:</p>
+<div class="eq"><span>\[E_{\rm LC}=c\,p^-\]</span><span>\[p^-=\frac{p_\perp^2+m^2c^2}{2p^+}\]</span></div>
+<div class="why"><h3>Neden bu formül bu kadar sevilir?</h3><p>Cartesian dilde enerji \(\sqrt{p^2c^2+m^2c^4}\), bir karekök. Light-cone dilinde karekök yok ve transverse momentum yalnız karesiyle giriyor: Formül göreli olmayan \(E=p^2/2m\)'ye benziyor, \(p^+\) kütlenin rolünü oynuyor. String'in transverse titreşimleri harmonik osilatörler olacak ve light-cone Hamiltonian'ı onların enerjilerinin basit toplamı olarak yazılacak. Açık string için kütle formülü bu yapıdan çıkıyor: \(\alpha'm^2=N-1\).</p></div>
+<p>Hızlı bir parçacıkta ne oluyor? Tam formülü ve büyük momentum yaklaşımını karşılaştırın.</p>
+<div class="figwrap">
+<div class="fig"><svg id="pm" role="img" aria-label="p eksi, tam ve yaklaşık"></svg></div>
+<div class="ctrl">
+<label for="p1-pm"><span>\(p^1/mc\)</span> <output id="o-pm"></output></label>
+<input type="range" id="p1-pm" min="-1" max="2" step="0.01" value="1">
+<dl class="read" id="r-pm"></dl>
+<p class="note">Sıradan enerji momentumla büyürken light-cone enerjisi küçülüyor.</p>
+</div>
+</div>
+<div class="warn">Aynı sonuç eylemden de çıkıyor: Karekökü kaldıran yardımcı bir değişkenle (einbein) eylemi yazıp \(X^+=\tau\) seçince Hamiltonian tam olarak \(p^-\). String için de aynı adımları atacağız.</div>
+</section>
+
+<section class="sec" id="ch2-boyut"><h2>D boyutta aynı kinematik</h2>
+<p>Formüllerin hiçbiri dört boyuta özel değil. Lorentz dönüşümlerini saymak için birime çok yakın bir dönüşüm alın: \(L=1+\omega\). Koşula koyunca \(\eta\omega\)'nın antisymmetric olması gerekiyor.</p>
+<div class="figwrap">
+<div class="fig"><svg id="matrix" role="img" aria-label="Antisimetrik matris"></svg></div>
+<div class="ctrl">
+<label for="d-dim">Boyut D <output id="o-dim"></output></label>
+<input type="range" id="d-dim" min="2" max="26" step="1" value="10">
+<div class="seg" id="p-dim"></div>
+<div class="stats" id="r-dim"></div>
+</div>
+</div>
+<div class="why"><h3>Neden \(D(D-1)/2\)?</h3><p>Antisymmetric bir \(D\times D\) matriste köşegen sıfır ve köşegenin altı üstünün eksisi; bağımsız olanlar yalnız üst üçgendeki girişler. İlk satır zamanı içeren çiftler, yani boost'lar (turuncu). Geri kalanlar iki uzay yönünden oluşan çiftler, yani düzlemlerde dönmeler (mavi). Light-cone çifti bir zaman ve bir uzay yönü kullanıyor; geriye \(D-2\) transverse yön kalıyor. Fotonun dört boyutta iki polarizasyonu olması bu sayıyla aynı ve bu tesadüf değil.</p></div>
+</section>
+
+<section class="sec" id="ch2-quiz"><h2>Kendini dene</h2>
+<p>Sekiz soru. Bir şık seçince doğru cevap ve kısa açıklama görünür.</p>
+<div class="quiz" id="quiz2"></div>
+<p class="score" id="score2"></p>
+</section>
+</main>
+</div>
+</div>
+<footer class="foot">Biricik Bilim · Sicim Teorisine Giriş · Furkan Utku Biber</footer>
+<script src="app.js"></script>
+<script src="figs.js"></script>
+</body>
+</html>
