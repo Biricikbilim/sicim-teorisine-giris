@@ -578,6 +578,16 @@ const Q2 = [
   ['Light-cone koordinatlarında boost nasıl görünür?', ['x⁺ ile x⁻ karışır', 'x⁺ bir sayıyla, x⁻ onun tersiyle çarpılır', 'Yalnız transverse yönler değişir', 'Hiçbir şey değişmez', 'x⁺ ve x⁻ yer değiştirir'], 1, 'x′± = e^(∓φ) x±; çarpım x⁺x⁻ sabit kalır.'],
   ['Evrim parametresi x⁺ seçildiğinde enerjinin rolünü ne oynar?', ['E', 'c p⁺', 'c p⁻', '|p|c', 'mc²'], 2, 'Düzlem dalganın x⁺\'ya göre türevi p⁻ getirir; p⁻ = (p⊥² + m²c²)/2p⁺.']
 ];
+const Q3 = [
+  ['Üç boyuttaki Maxwell denklemleri neden olduğu gibi başka boyutlara taşınamaz?', ['Işık hızı boyuta bağlıdır', 'Çapraz çarpım ve curl yalnız üç boyutta tanımlıdır', 'Yük korunmaz', 'Gauss yasası yanlıştır', 'Metrik değişir'], 1, 'İki vektöre dik tek bir doğrultu yalnız üç boyutta var. Alanları F<sub>μν</sub> tensörüne koyunca sorun kalkıyor.'],
+  ['A → A + ∇ε, Φ → Φ − (1/c)∂ε/∂t dönüşümü için hangisi doğru?', ['Yalnız B\'yi değiştirir', 'Yalnız E\'yi değiştirir', 'E ve B\'yi değiştirmez', 'Yükü değiştirir', 'Yalnız Lorenz gauge\'da geçerlidir'], 2, '∇×∇ε = 0 ve E\'deki iki ε terimi birbirini götürür: gauge dönüşümü.'],
+  ['Bizim kuralımızda F₀ᵢ ve F⁰ⁱ nedir?', ['İkisi de Eᵢ', 'F₀ᵢ = −Eᵢ, F⁰ⁱ = +Eᵢ', 'F₀ᵢ = Bᵢ', 'İkisi de −Eᵢ', 'F₀ᵢ = Eᵢ, F⁰ⁱ = −Eᵢ'], 1, 'F₀ᵢ = ∂₀Aᵢ − ∂ᵢA₀ = −Eᵢ; bir zaman indisini kaldırmak bir eksi getirir.'],
+  ['D = 5\'te alan tensörünün manyetik kısmı kaç bileşenlidir?', ['3', '4', '5', '6', '10'], 3, 'd(d−1)/2 = 4·3/2 = 6. Toplam D(D−1)/2 = 10, elektrik kısım 4.'],
+  ['Dört uzay boyutunda noktasal yükün alanı nasıl azalır?', ['1/r', '1/r²', '1/r³', '1/r⁴', 'e^(−r)'], 2, 'E = q/(Ω₃ r³), Ω₃ = 2π². Akı r^(d−1) gibi büyüyen bir yüzeye yayılır.'],
+  ['D = 6\'da G⁽⁶⁾ 16 katına çıkarsa ℓₚ⁽⁶⁾ ne olur?', ['16 kat', '4 kat', '2 kat', '√2 kat', 'Değişmez'], 2, '(ℓₚ⁽ᴰ⁾)^(D−2) ∝ G⁽ᴰ⁾: dördüncü kök, 16^(1/4) = 2.'],
+  ['Yarıçapı R olan tek bir compact boyut için dört boyutlu Newton sabiti nedir?', ['G⁽⁵⁾·2πR', 'G⁽⁵⁾/2πR', 'G⁽⁵⁾/R²', 'G⁽⁵⁾', '√G⁽⁵⁾'], 1, 'Kaynak çembere yayılınca ρ⁽⁵⁾ = ρ⁽⁴⁾/2πR ve Poisson denklemi G⁽⁵⁾/2πR ile dört boyutlu biçimini alır.'],
+  ['D = 10\'da kütlesiz graviton kaç polarizasyon taşır?', ['8', '28', '35', '36', '45'], 2, 'D(D−3)/2 = 10·7/2 = 35: 8×8 simetrik matrisin 36 elemanından iz koşuluyla biri düşer.']
+];
 function quiz(el, sc, Q) {
   let done = 0, ok = 0;
   el.innerHTML = Q.map((q, i) => `<div class="q" data-q="${i}"><h3>${i + 1}. ${q[0]}</h3>${q[1].map((o, j) => `<button type="button" class="opt" data-j="${j}"><b>${'abcde'[j]})</b><span>${o}</span></button>`).join('')}<p class="exp">${q[3]}</p></div>`).join('');
@@ -585,14 +595,14 @@ function quiz(el, sc, Q) {
     const q = Q[+qd.dataset.q], j = +b.dataset.j; qd.classList.add('done'); qd.querySelectorAll('.opt')[q[2]].classList.add('ok'); if (j !== q[2]) b.classList.add('no'); else ok++; done++;
     $(sc).textContent = done === Q.length ? `Sonuç: ${ok} / ${Q.length}` : ''; });
 }
-quiz($('quiz1'), 'score1', Q1); quiz($('quiz2'), 'score2', Q2);
+quiz($('quiz1'), 'score1', Q1); quiz($('quiz2'), 'score2', Q2); quiz($('quiz3'), 'score3', Q3);
 
 /* ---------- router ---------- */
 const topbar = document.querySelector('.top');
 new ResizeObserver(() => document.documentElement.style.setProperty('--toph', topbar.offsetHeight + 'px')).observe(topbar);
-const views = {home: $('v-home'), ch1: $('v-ch1'), ch2: $('v-ch2')};
+const views = {home: $('v-home'), ch1: $('v-ch1'), ch2: $('v-ch2'), ch3: $('v-ch3')};
 function route() {
-  const h = location.hash.slice(1) || 'home', v = h.startsWith('ch1') ? 'ch1' : h.startsWith('ch2') ? 'ch2' : 'home';
+  const h = location.hash.slice(1) || 'home', v = ['ch1', 'ch2', 'ch3'].find(c => h.startsWith(c)) || 'home';
   Object.entries(views).forEach(([k, el]) => el.classList.toggle('on', k === v));
   document.querySelectorAll('.tabs a').forEach(a => { if (a.dataset.v === v) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current'); });
   requestAnimationFrame(() => { redraws.forEach(f => f()); const t = document.getElementById(h); if (t && h !== v) t.scrollIntoView(); else window.scrollTo(0, 0); });

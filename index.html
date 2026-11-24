@@ -7,7 +7,7 @@
 <title>Sicim Teorisine Giriş</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Sora:wght@500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css?v=3">
+<link rel="stylesheet" href="style.css?v=4">
 <script>
 window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg:{fontCache:'global'},startup:{typeset:true}};
 </script>
@@ -20,6 +20,7 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg
 <a href="#home" data-v="home">Ana sayfa</a>
 <a href="#ch1" data-v="ch1">Chapter 1</a>
 <a href="#ch2" data-v="ch2">Chapter 2</a>
+<a href="#ch3" data-v="ch3">Chapter 3</a>
 </nav>
 </header>
 
@@ -45,6 +46,9 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg
 <a class="card" href="#ch2"><span class="k">Chapter 2</span><h2>Özel görelilik ve light-cone</h2>
 <p>String'i kuantize ederken kullanacağımız dil ve light-cone Hamiltonian'ı.</p>
 <ol><li>Birimler</li><li>Aralık ve ışık konisi</li><li>Lorentz dönüşümleri</li><li>Hız toplama</li><li>Proper time</li><li>Light-cone koordinatları</li><li>Enerji ve momentum</li><li>Light-cone enerjisi</li><li>D boyut</li><li>Kendini dene</li></ol></a>
+<a class="card" href="#ch3"><span class="k">Chapter 3</span><h2>Elektromanyetizma ve kütleçekim farklı boyutlarda</h2>
+<p>Kuvvetleri her boyutta yazmak ve küçük ek boyutların kütleçekimi nasıl değiştirdiği.</p>
+<ol><li>Neden yeni bir dil?</li><li>Potansiyeller ve gauge</li><li>Alan tensörü</li><li>Maxwell iki satırda</li><li>Kürelerin ölçüsü</li><li>Noktasal yük</li><li>Kütleçekim ve Planck</li><li>Compactification</li><li>Büyük ek boyutlar</li><li>Polarizasyonlar</li><li>Kendini dene</li></ol></a>
 </div>
 </main>
 
@@ -585,8 +589,189 @@ window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},svg
 </main>
 </div>
 </div>
+<!-- ============ CHAPTER 3 ============ -->
+<div id="v-ch3" class="view">
+<div class="chap">
+<nav class="rail" aria-label="Chapter 3 bölümleri">
+<h2>Chapter 3</h2>
+<a href="#ch3-dil">Neden yeni bir dil?</a>
+<a href="#ch3-potansiyel">Potansiyeller ve gauge</a>
+<a href="#ch3-tensor">Alan tensörü</a>
+<a href="#ch3-maxwell">Maxwell iki satırda</a>
+<a href="#ch3-kure">Kürelerin ölçüsü</a>
+<a href="#ch3-nokta">Noktasal yük her boyutta</a>
+<a href="#ch3-planck">Kütleçekim ve Planck</a>
+<a href="#ch3-compact">Compactification</a>
+<a href="#ch3-buyuk">Büyük ek boyutlar</a>
+<a href="#ch3-pol">Polarizasyonlar</a>
+<a href="#ch3-quiz">Kendini dene</a>
+</nav>
+<main class="content">
+<header class="chead" id="ch3"><h1>Chapter 3: Elektromanyetizma ve kütleçekim farklı boyutlarda</h1>
+<p>String teorisi dört değil, daha fazla boyut istiyor. Bu bölümde bildiğimiz iki kuvveti her boyutta yazıyor, sonra ek boyutların küçük bir çembere sarılınca dört boyutta ölçtüğümüz kütleçekimi nasıl değiştirdiğini buluyoruz. Kurallar: \(\eta_{\mu\nu}=\mathrm{diag}(-1,1,\dots,1)\), \(x^0=ct\), Heaviside–Lorentz birimleri, \(c\) açık. \(D\) uzayzaman, \(d=D-1\) uzay boyutu.</p></header>
+
+<section class="sec" id="ch3-dil"><h2>Neden yeni bir dil?</h2>
+<p>Üç boyutta Maxwell denklemleri ve Lorentz kuvveti çapraz çarpım kullanıyor. Çapraz çarpım iki vektöre dik <em>tek</em> bir doğrultu seçiyor ve böyle tek bir doğrultu yalnız üç boyutta var. Dört uzay boyutunda \(\hat x\) ile \(\hat y\)'ye dik olan doğrultular bir düzlem oluşturuyor; “\(\vec v\times\vec B\)” anlamsızlaşıyor.</p>
+<p>Çözüm, manyetik alanı vektör olarak düşünmeyi bırakmak. Alanlar iki indisli, antisymmetric bir nesnede yaşıyor: \(F_{\mu\nu}\). Elektrik alan zaman–uzay satırında, manyetik alan uzay–uzay bloğunda. Boyutu değiştirip kaç bileşen olduğunu sayın.</p>
+<div class="figwrap">
+<div class="fig"><svg id="f3-mat" role="img" aria-label="Alan tensörünün bileşenleri"></svg></div>
+<div class="ctrl">
+<label for="d3-D">Uzayzaman boyutu D <output id="o3-D"></output></label>
+<input type="range" id="d3-D" min="3" max="11" step="1" value="4">
+<div class="stats" id="r3-D"></div>
+<div class="verdict" id="v3-D"></div>
+</div>
+</div>
+<div class="why"><h3>Neden \(D(D-1)/2\)?</h3><p>Antisymmetric bir \(D\times D\) matriste köşegen sıfır ve alt üçgen üst üçgenin eksisi. Bağımsız olanlar üst üçgendeki \(D(D-1)/2\) eleman. İlk satırda zamanı içeren \(D-1\) eleman var: elektrik alan, her boyutta bir vektör. Geri kalan \((D-1)(D-2)/2\) eleman manyetik kısım. Bu sayı uzay boyutuna yalnız \(D=4\)'te eşit; manyetik alanı bir vektör gibi yazabilmemiz bu rastlantıdan.</p></div>
+</section>
+
+<section class="sec" id="ch3-potansiyel"><h2>Potansiyeller ve gauge serbestliği</h2>
+<p>\(\nabla\cdot\vec B=0\) olduğu için \(\vec B=\nabla\times\vec A\) yazabiliyoruz. Bunu Faraday yasasına koyunca \(\vec E+\frac1c\partial_t\vec A\)'nın curl'ü sıfır çıkıyor; o yüzden bir gradyan. Kaynaksız iki Maxwell denklemi potansiyellerle kendiliğinden sağlanıyor.</p>
+<div class="eq"><span>\[\vec B=\nabla\times\vec A\]</span><span>\[\vec E=-\nabla\Phi-\frac1c\frac{\partial\vec A}{\partial t}\]</span><span>\[\vec A\to\vec A+\nabla\epsilon,\quad\Phi\to\Phi-\frac1c\frac{\partial\epsilon}{\partial t}\]</span></div>
+<p>Son satır alanları değiştirmiyor: gauge dönüşümü. Aşağıda aynı düzgün elektrik alanı \(\vec E=-\frac ac\hat x\) veren bir potansiyel ailesi var. Kaydırıcı \(\epsilon=-\lambda\,a\,t\,x\) ile gauge dönüşümü yapıyor: \(\lambda=0\)'da yalnız vektör potansiyeli, \(\lambda=1\)'de yalnız skaler potansiyel.</p>
+<div class="figwrap">
+<div class="fig"><svg id="f3-gauge" role="img" aria-label="Aynı alanı veren iki potansiyel"></svg></div>
+<div class="ctrl">
+<label for="g3-l">Gauge parametresi λ <output id="o3-l"></output></label>
+<input type="range" id="g3-l" min="0" max="1" step="0.01" value="0">
+<dl class="read" id="r3-l"></dl>
+<p class="note">Birimler: \(a=c=1\). Sol: \(t=1\) anında \(\Phi(x)\). Sağ: \(A_x(t)\). İkisi de değişiyor, alan değişmiyor.</p>
+</div>
+</div>
+<div class="why"><h3>Neden alan değişmiyor?</h3><p>\(\nabla\times\nabla\epsilon=0\): bir gradyanın curl'ü sıfır, çünkü kısmi türevlerin sırası önemsiz. Elektrik alanda \(\epsilon\)'dan gelen iki terim \(\frac1c\nabla\partial_t\epsilon\) ve \(-\frac1c\partial_t\nabla\epsilon\); aynı şey, zıt işaretli. Ölçülen şey alanlar; potansiyellerdeki bu fazlalık hesap yaparken kullanabileceğimiz bir serbestlik.</p></div>
+</section>
+
+<section class="sec" id="ch3-tensor"><h2>Alan tensörü</h2>
+<p>Gauge dönüşümünde \(\vec A\) uzay türeviyle, \(\Phi\) zaman türeviyle değişiyor; ikisi bir dört-vektörde birleşiyor ve dönüşüm tek satıra iniyor. Antisimetrik türevi gauge altında değişmiyor.</p>
+<div class="eq"><span>\[A_\mu=(-\Phi,\vec A),\quad A_\mu\to A_\mu+\partial_\mu\epsilon\]</span><span>\[F_{\mu\nu}=\partial_\mu A_\nu-\partial_\nu A_\mu\]</span><span>\[F_{0i}=-E_i,\quad F^{0i}=+E_i,\quad F_{12}=B_z\]</span></div>
+<p>\(\vec E\) ile \(\vec B\) aynı tensörün bileşenleri olduğu için bir boost onları karıştırıyor. \(x\) yönünde bir boost için \(F'^{\mu\nu}=\Lambda^\mu{}_\alpha\Lambda^\nu{}_\beta F^{\alpha\beta}\) hesabı \(E'_y=\gamma(E_y-\beta B_z)\), \(B'_z=\gamma(B_z-\beta E_y)\) veriyor. Bir başlangıç alanı seçin ve boost'u değiştirin.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="f3-boost" role="img" aria-label="Boost altında alan bileşenleri"></svg></div>
+<div class="ctrl">
+<div class="seg" id="s3-b"></div>
+<label for="b3-b">Boost hızı β <output id="o3-b"></output></label>
+<input type="range" id="b3-b" min="-0.95" max="0.95" step="0.01" value="0.5">
+<dl class="read" id="r3-b"></dl>
+</div>
+</div>
+<div class="why"><h3>Neden \(|\vec E|^2-|\vec B|^2\) değişmiyor?</h3><p>Bütün indisleri toplanmış bir nesne her gözlemci için aynı sayıyı verir: \(F_{\mu\nu}F^{\mu\nu}=2(|\vec B|^2-|\vec E|^2)\). Saf elektrik alan gören bir gözlemci varsa, hiçbir gözlemci saf manyetik alan göremez; bu sayının işareti değişmez. \(|\vec E|=|\vec B|\) olan bir alan, örneğin bir ışık dalgası, her gözlemci için öyle kalır.</p></div>
+</section>
+
+<section class="sec" id="ch3-maxwell"><h2>Maxwell denklemleri iki satırda</h2>
+<p>Kaynaksız iki denklem bir özdeşlikten çıkıyor. \(F\)'i potansiyellerle yazınca altı terim çiftler halinde birbirini götürüyor. \((\lambda,\mu,\nu)=(1,2,3)\) seçimi \(\nabla\cdot\vec B=0\), \((0,1,2)\) seçimi Faraday yasasının \(z\) bileşenini veriyor. Kaynaklı iki denklem \(j^\mu=(c\rho,\vec j)\) ile tek bir satır: \(\mu=0\) Gauss, \(\mu=i\) Ampère–Maxwell.</p>
+<div class="eq"><span>\[\partial_\lambda F_{\mu\nu}+\partial_\mu F_{\nu\lambda}+\partial_\nu F_{\lambda\mu}=0\]</span><span>\[\partial_\nu F^{\mu\nu}=\frac1c\,j^\mu\]</span><span>\[\frac{\mathrm d p^\mu}{\mathrm d\tau}=\frac qc\,F^\mu{}_\nu u^\nu\]</span></div>
+<p>Hiçbirinde çapraz çarpım yok; her \(D\)'de aynı biçimde yazılıyor. İkinci satıra bir türev daha uygulayınca \(\partial_\mu j^\mu=0\) çıkıyor: yük korunumu. Lorenz gauge'da, \(\partial_\mu A^\mu=0\), denklemler \(\Box A^\mu=-j^\mu/c\) dalga denklemlerine dönüşüyor.</p>
+<div class="why"><h3>Neden manyetik kuvvet hiçbir boyutta iş yapmaz?</h3><p>Kuvvetin manyetik kısmı \(\sum_j F_{ij}v_j\). Hızla çarpımı \(\sum_{ij}F_{ij}v_iv_j\); antisymmetric \(F_{ij}\) ile simetrik \(v_iv_j\) toplanınca her terim eşiyle sadeleşiyor. Üç boyuttaki “\(\vec v\times\vec B\) hıza dik” sonucunun boyuttan bağımsız hali bu.</p></div>
+<div class="warn">\(\partial_\nu F^{\mu\nu}\) yerine \(\partial_\nu F^{\nu\mu}\) yazarsanız antisimetri bir eksi getirir ve Gauss yasası \(\nabla\cdot\vec E=-\rho\) olur. İndis sırası bir kez seçilince her yerde aynı tutulmalı.</div>
+</section>
+
+<section class="sec" id="ch3-kure"><h2>Yüksek boyutlu kürelerin ölçüsü</h2>
+<p>Coulomb yasasındaki \(4\pi r^2\), kürenin yüzey alanı. \(d\) boyutta onun yerine \(\Omega_{d-1}r^{d-1}\) gelecek. \(\Omega_{d-1}\)'i bulmak için \(\int e^{-r^2}\mathrm d^dx\) integralini iki yoldan hesaplıyoruz: Kartezyen koordinatlarda \(\pi^{d/2}\), ince kabuklarla \(\Omega_{d-1}\cdot\frac12\Gamma(d/2)\).</p>
+<div class="eq"><span>\[\Omega_{d-1}=\frac{2\pi^{d/2}}{\Gamma(d/2)}\]</span><span>\[\mathrm{vol}(B^d)=\frac{\Omega_{d-1}}{d}=\frac{\pi^{d/2}}{\Gamma(\frac d2+1)}\]</span><span>\[\Gamma(s+1)=s\,\Gamma(s),\ \ \Gamma(\tfrac12)=\sqrt\pi\]</span></div>
+<div class="figwrap">
+<div class="fig"><svg id="f3-om" role="img" aria-label="Birim kürenin ölçüsü ve birim topun hacmi"></svg></div>
+<div class="ctrl">
+<label for="k3-d">Uzay boyutu d <output id="o3-d"></output></label>
+<input type="range" id="k3-d" min="1" max="16" step="1" value="4">
+<dl class="read" id="r3-d"></dl>
+<p class="note">\(d=1\)'de “küre” iki nokta, \(\Omega_0=2\). İki nicelik de bir maksimumdan sonra sıfıra iniyor: Yüksek boyutta birim top, onu saran küpün içinde giderek küçük bir yer kaplıyor.</p>
+</div>
+</div>
+</section>
+
+<section class="sec" id="ch3-nokta"><h2>Noktasal yük her boyutta</h2>
+<p>Diverjans teoremi her boyutta geçerli. Gauss yasasını yarıçapı \(r\) olan bir küre içinde integralleyince alan, aynı akının \(r^{d-1}\) gibi büyüyen bir yüzeye yayılmasından çıkıyor. Potansiyel, alanı sonsuzdan integralleyerek.</p>
+<div class="eq"><span>\[E(r)=\frac{q}{\Omega_{d-1}\,r^{d-1}}\]</span><span>\[\Phi(r)=\frac{q}{(d-2)\,\Omega_{d-1}\,r^{d-2}}\quad(d>2)\]</span><span>\[\Bigl[\frac{q^2}{\hbar c}\Bigr]=L^{d-3}\]</span></div>
+<p>Bir test yükü \(r\)'den \(kr\)'ye itilirken alanın yaptığı iş, potansiyel enerjideki azalma: \(W=U(r)\bigl(1-k^{-(d-2)}\bigr)\). Dört uzay boyutunda \(k=3\) için \(\tfrac89U(r)\). Son enerji ile yapılan işi karıştırmayın.</p>
+<div class="figwrap">
+<div class="fig"><svg id="f3-fall" role="img" aria-label="Alanın uzaklıkla azalması"></svg></div>
+<div class="ctrl">
+<label for="n3-d">Uzay boyutu d <output id="o3-nd"></output></label>
+<input type="range" id="n3-d" min="2" max="6" step="1" value="4">
+<label for="n3-k">Son uzaklık k·r <output id="o3-nk"></output></label>
+<input type="range" id="n3-k" min="1" max="6" step="0.1" value="3">
+<dl class="read" id="r3-n"></dl>
+</div>
+</div>
+<div class="why"><h3>Neden \(d=2\)'de logaritma?</h3><p>Alan \(1/r\) ile azalıyor ve \(\int\mathrm dr/r=\ln r\) sonsuzda ıraksıyor; potansiyelin sıfır noktasını sonsuzda seçemiyoruz, bir \(r_0\)'da seçiyoruz. Kuvvet ve potansiyel farkları bu seçime bağlı değil. Ayrıca \(q^2/\hbar c\) yalnız \(d=3\)'te boyutsuz: ince yapı sabitinin saf bir sayı olması da üç boyuta özgü.</p></div>
+</section>
+
+<section class="sec" id="ch3-planck"><h2>Kütleçekim ve Planck ölçekleri</h2>
+<p>Newton kütleçekimi elektrostatikle aynı yapıda: \(\vec g=-\nabla V_g\), \(\nabla^2V_g=4\pi G\rho_m\). Taşınabilir olan bu yerel denklem; \(1/r^2\) değil. \(D\) boyutta aynı adımlar:</p>
+<div class="eq"><span>\[[G^{(D)}]=M^{-1}L^{D-1}T^{-2}\]</span><span>\[\bigl(\ell_{\rm P}^{(D)}\bigr)^{D-2}=\frac{\hbar G^{(D)}}{c^3}\]</span><span>\[|\vec g|=\frac{4\pi G^{(D)}M}{\Omega_{d-1}r^{d-1}}\]</span></div>
+<p>Dört boyutta \(\ell_{\rm P}\approx1{,}6\times10^{-35}\) m, \(m_{\rm P}c^2\approx1{,}2\times10^{19}\) GeV. İki parçacık arasındaki kütleçekimin elektrik kuvvetine oranı uzaklıktan bağımsız: \(F_g/F_e=(M/m_{\rm P})^2/\alpha\). Kütleyi değiştirin.</p>
+<div class="figwrap">
+<div class="fig"><svg id="f3-fg" role="img" aria-label="Kütleçekimin elektrik kuvvetine oranı"></svg></div>
+<div class="ctrl">
+<label for="p3-m">Kütle, log₁₀(M / kg) <output id="o3-m"></output></label>
+<input type="range" id="p3-m" min="-31" max="-6" step="0.05" value="-26.78">
+<dl class="read" id="r3-m"></dl>
+<p class="note">Her iki parçacığın yükü \(e\). Turuncu çizgi \(F_g=F_e\): \(M=\sqrt\alpha\,m_{\rm P}\).</p>
+</div>
+</div>
+<div class="why"><h3>Neden dört uzay boyutunda gezegen olmaz?</h3><p>Merkezkaç terimi \(\ell^2/2mr^2\). Kütleçekim \(1/r^3\) ise potansiyel enerji \(-k/r^2\): iki terim aynı kuvvetle değişiyor ve etkin potansiyelin minimumu yok. Parçacık ya uzaklaşıyor ya merkeze düşüyor. Kararlı yörüngeler, büyük ölçeklerde kütleçekimin \(1/r^2\) olduğunu söylüyor.</p></div>
+</section>
+
+<section class="sec" id="ch3-compact"><h2>Bir çember üzerinde compactification</h2>
+<p>Beşinci doğrultuyu bir çembere saralım: \(y\sim y+2\pi R\). Kaynağı çember boyunca düzgün yayarsak \(\rho^{(5)}=\rho^{(4)}/2\pi R\) ve potansiyel \(y\)'ye bağlı değil. Beş boyutlu Poisson denklemi dört boyutluya iniyor; dört boyutlu gözlemci Newton sabiti olarak bir birleşim ölçüyor.</p>
+<div class="eq"><span>\[\bigl(\nabla_3^2+\partial_y^2\bigr)V_g=4\pi G^{(5)}\rho^{(5)}\ \Longrightarrow\ \nabla_3^2V_g=4\pi\frac{G^{(5)}}{2\pi R}\rho^{(4)}\]</span><span>\[G^{(4)}=\frac{G^{(D)}}{\mathcal V_n},\quad\mathcal V_n=\prod_a 2\pi R_a\]</span></div>
+<p>Gerçek bir noktasal kütle compact doğrultuda da bir noktada durur. Çemberi açıp \(2\pi R\) aralıklı sonsuz sayıda ayna görüntüsü koyarak alanı tam hesaplayabiliriz. Aşağıdaki eğri bu toplam: Kısa mesafede beş boyutlu \(1/r^3\), uzun mesafede tam olarak \(G^{(4)}M/r^2\).</p>
+<div class="figwrap">
+<div class="fig"><svg id="f3-img" role="img" aria-label="Ayna görüntülerinden kuvvet"></svg></div>
+<div class="ctrl">
+<label for="c3-r">Uzaklık log₁₀(r / R) <output id="o3-r"></output></label>
+<input type="range" id="c3-r" min="-2" max="2" step="0.01" value="0">
+<dl class="read" id="r3-r"></dl>
+<p class="note">Dikey eksen: kuvvetin Newton yasasının öngördüğüne oranı, \(|\vec g|\,r^2/G^{(4)}M\).</p>
+</div>
+</div>
+<div class="why"><h3>Neden uzun mesafede Newton yasası?</h3><p>Uzaktan bakınca görüntüler sık; toplamları yoğunluğu \(M/2\pi R\) olan düzgün bir çizginin alanına dönüşüyor: \(\int\frac{M\,\mathrm dy}{2\pi R}\frac{2G^{(5)}}{\pi s^3}\frac rs=\frac{G^{(5)}M}{2\pi R\,r^2}\). Kısa mesafede en yakın görüntü, kütlenin kendisi, baskın ve oran \(4R/r\) gibi büyüyor.</p></div>
+</section>
+
+<section class="sec" id="ch3-buyuk"><h2>Büyük ek boyutlar</h2>
+<p>\(G^{(4)}=G^{(D)}/\mathcal V_n\)'yi Planck uzunluklarıyla yazınca, \(n\) eşit çember ve \(\ell_C=2\pi R\) için:</p>
+<div class="eq"><span>\[\bigl(\ell_{\rm P}^{(D)}\bigr)^{n+2}=\ell_C^{\,n}\bigl(\ell_{\rm P}^{(4)}\bigr)^2\]</span><span>\[\ell_C=\ell_{\rm P}^{(D)}\Bigl(\frac{\ell_{\rm P}^{(D)}}{\ell_{\rm P}^{(4)}}\Bigr)^{2/n}\]</span></div>
+<p>Temel kütleçekim ölçeği çok daha düşük olabilir; dört boyuttaki zayıflık ek boyutların büyüklüğünden geliyor olabilir. Varsayımsal bir temel uzunluk ve ek boyut sayısı seçin.</p>
+<div class="figwrap">
+<div class="fig short"><svg id="f3-lc" role="img" aria-label="Compact boyutun büyüklüğü"></svg></div>
+<div class="ctrl">
+<label for="l3-n">Ek boyut sayısı n <output id="o3-n"></output></label>
+<input type="range" id="l3-n" min="1" max="6" step="1" value="2">
+<label for="l3-l">Temel uzunluk, log₁₀(ℓₚ⁽ᴰ⁾ / m) <output id="o3-ll"></output></label>
+<input type="range" id="l3-l" min="-34" max="-18" step="0.5" value="-20">
+<dl class="read" id="r3-lc"></dl>
+<p class="note">Bir mertebe hesabı. Enerji ölçeği \(\hbar c/\ell_{\rm P}^{(D)}\) olarak alındı. Deneysel sınırların güncel bir özeti değil.</p>
+</div>
+</div>
+<div class="why"><h3>Neden ışık ek boyutlara yayılmıyor?</h3><p>Yayılsaydı elektrik kuvveti de mikrometre altında \(1/r^{2+n}\) gibi değişirdi; elektromanyetizma çok daha kısa mesafelere kadar test edilmiş. String teorisinin önerdiği bir mekanizma: Foton açık string'in titreşimi ve uçları bir D-brane'e bağlı; graviton kapalı string'in titreşimi, ucu yok, bütün boyutlara yayılıyor.</p></div>
+</section>
+
+<section class="sec" id="ch3-pol"><h2>Foton ve graviton kaç polarizasyon taşır?</h2>
+<p>Düzlem dalga \(A^\mu=\varepsilon^\mu e^{ik\cdot x}\) için üç koşul: \(k^2=0\) (kütlesiz), \(k\cdot\varepsilon=0\) (Lorenz koşulu, bir bileşen düşüyor), \(\varepsilon\sim\varepsilon+\beta k\) (kalan gauge serbestliği, bir bileşen daha). Kalan \(D-2\) transverse doğrultu. Graviton bu doğrultularda simetrik, izsiz bir matris.</p>
+<div class="eq"><span>\[N_\gamma=D-2\]</span><span>\[N_g=\frac{(D-2)(D-1)}2-1=\frac{D(D-3)}2\]</span></div>
+<div class="figwrap">
+<div class="fig"><svg id="f3-pol" role="img" aria-label="Graviton polarizasyon matrisi"></svg></div>
+<div class="ctrl">
+<label for="q3-D">Uzayzaman boyutu D <output id="o3-q"></output></label>
+<input type="range" id="q3-D" min="3" max="26" step="1" value="4">
+<div class="seg" id="s3-q"></div>
+<div class="stats" id="r3-q"></div>
+</div>
+</div>
+<div class="why"><h3>Bu sayılar neden önemli?</h3><p>Bir parmak izi. İleride kapalı string'in en hafif durumlarını sayacağız; iki transverse indisli \(e_{ij}\) üç parçaya ayrılacak: simetrik izsiz kısım (graviton, \(D(D-3)/2\)), antisymmetric kısım (\(B_{\mu\nu}\)) ve iz (dilaton). Graviton sayısını orada bulmamız, string teorisinin bir kütleçekim teorisi olmasının ilk işareti olacak.</p></div>
+</section>
+
+<section class="sec" id="ch3-quiz"><h2>Kendini dene</h2>
+<p>Sekiz soru. Bir şık seçince doğru cevap ve kısa açıklama görünür.</p>
+<div class="quiz" id="quiz3"></div>
+<p class="score" id="score3"></p>
+</section>
+</main>
+</div>
+</div>
 <footer class="foot">Biricik Bilim · Sicim Teorisine Giriş · Furkan Utku Biber</footer>
-<script src="app.js?v=3"></script>
-<script src="figs.js?v=3"></script>
+<script src="app.js?v=4"></script>
+<script src="figs.js?v=4"></script>
+<script src="figs3.js?v=4"></script>
 </body>
 </html>
